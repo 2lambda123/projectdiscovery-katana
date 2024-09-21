@@ -23,21 +23,19 @@
   <a href="https://discord.gg/projectdiscovery">Join Discord</a>
 </p>
 
-
 # Features
 
 ![image](https://user-images.githubusercontent.com/8293321/199371558-daba03b6-bf9c-4883-8506-76497c6c3a44.png)
 
- - Fast And fully configurable web crawling
- - **Standard** and **Headless** mode
- - **Active** and **Passive** mode
- - **JavaScript** parsing / crawling
- - Customizable **automatic form filling**
- - **Scope control** - Preconfigured field / Regex 
- - **Customizable output** - Preconfigured fields
- - INPUT - **STDIN**, **URL** and **LIST**
- - OUTPUT - **STDOUT**, **FILE** and **JSON**
-
+- Fast And fully configurable web crawling
+- **Standard** and **Headless** mode
+- **Active** and **Passive** mode
+- **JavaScript** parsing / crawling
+- Customizable **automatic form filling**
+- **Scope control** - Preconfigured field / Regex
+- **Customizable output** - Preconfigured fields
+- INPUT - **STDIN**, **URL** and **LIST**
+- OUTPUT - **STDOUT**, **FILE** and **JSON**
 
 ## Installation
 
@@ -59,7 +57,6 @@ docker pull projectdiscovery/katana:latest
 ```
 
 > To run katana in standard mode using docker -
-
 
 ```sh
 docker run projectdiscovery/katana:latest -u https://tesla.com
@@ -83,14 +80,13 @@ sudo apt update
 sudo snap refresh
 sudo apt install zip curl wget git
 sudo snap install golang --classic
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-sudo apt update 
+sudo apt update
 sudo apt install google-chrome-stable
 ```
 
 > install katana -
-
 
 ```sh
 go install github.com/projectdiscovery/katana/cmd/katana@latest
@@ -224,6 +220,7 @@ katana -u https://tesla.com,https://google.com
 ```
 
 #### List Input
+
 ```bash
 $ cat url_list.txt
 
@@ -250,10 +247,10 @@ Example running katana -
 ```console
 katana -u https://youtube.com
 
-   __        __                
+   __        __
   / /_____ _/ /____ ____  ___ _
  /  '_/ _  / __/ _  / _ \/ _  /
-/_/\_\\_,_/\__/\_,_/_//_/\_,_/ v0.0.1                     
+/_/\_\\_,_/\__/\_,_/_//_/\_,_/ v0.0.1
 
       projectdiscovery.io
 
@@ -294,7 +291,6 @@ https://www.youtube.com/jobs/
 https://www.youtube.com/kids/
 ```
 
-
 ## Crawling Mode
 
 ### Standard Mode
@@ -304,6 +300,7 @@ Standard crawling modality uses the standard go http library under the hood to h
 ### Headless Mode
 
 Headless mode hooks internal headless calls to handle HTTP requests/responses directly within the browser context. This offers two advantages:
+
 - The HTTP fingerprint (TLS and user agent) fully identify the client as a legitimate browser
 - Better coverage since the endpoints are discovered analyzing the standard raw response, as in the previous modality, and also the browser-rendered one with javascript enabled.
 
@@ -328,8 +325,7 @@ HEADLESS:
    -xhr, -xhr-extraction             extract xhr requests
 ```
 
-*`-no-sandbox`*
-----
+## _`-no-sandbox`_
 
 Runs headless chrome browser with **no-sandbox** option, useful when running as root user.
 
@@ -337,8 +333,7 @@ Runs headless chrome browser with **no-sandbox** option, useful when running as 
 katana -u https://tesla.com -headless -no-sandbox
 ```
 
-*`-no-incognito`*
-----
+## _`-no-incognito`_
 
 Runs headless chrome browser without incognito mode, useful when using the local browser.
 
@@ -346,36 +341,31 @@ Runs headless chrome browser without incognito mode, useful when using the local
 katana -u https://tesla.com -headless -no-incognito
 ```
 
-*`-headless-options`*
-----
+## _`-headless-options`_
 
 When crawling in headless mode, additional chrome options can be specified using `-headless-options`, for example -
-
 
 ```console
 katana -u https://tesla.com -headless -system-chrome -headless-options --disable-gpu,proxy-server=http://127.0.0.1:8080
 ```
 
-
 ## Scope Control
 
 Crawling can be endless if not scoped, as such katana comes with multiple support to define the crawl scope.
 
-*`-field-scope`*
-----
+## _`-field-scope`_
+
 Most handy option to define scope with predefined field name, `rdn` being default option for field scope.
 
-   - `rdn` - crawling scoped to root domain name and all subdomains (e.g. `*example.com`) (default)
-   - `fqdn` - crawling scoped to given sub(domain) (e.g. `www.example.com` or `api.example.com`)
-   - `dn` - crawling scoped to domain name keyword (e.g. `example`)
+- `rdn` - crawling scoped to root domain name and all subdomains (e.g. `*example.com`) (default)
+- `fqdn` - crawling scoped to given sub(domain) (e.g. `www.example.com` or `api.example.com`)
+- `dn` - crawling scoped to domain name keyword (e.g. `example`)
 
 ```console
 katana -u https://tesla.com -fs dn
 ```
 
-
-*`-crawl-scope`*
-------
+## _`-crawl-scope`_
 
 For advanced scope control, `-cs` option can be used that comes with **regex** support.
 
@@ -398,9 +388,7 @@ wordpress/
 katana -u https://tesla.com -cs in_scope.txt
 ```
 
-
-*`-crawl-out-scope`*
------
+## _`-crawl-out-scope`_
 
 For defining what not to crawl, `-cos` option can be used and also support **regex** input.
 
@@ -421,8 +409,7 @@ $ cat out_of_scope.txt
 katana -u https://tesla.com -cos out_of_scope.txt
 ```
 
-*`-no-scope`*
-----
+## _`-no-scope`_
 
 Katana is default to scope `*.domain`, to disable this `-ns` option can be used and also to crawl the internet.
 
@@ -430,8 +417,7 @@ Katana is default to scope `*.domain`, to disable this `-ns` option can be used 
 katana -u https://tesla.com -ns
 ```
 
-*`-display-out-scope`*
-----
+## _`-display-out-scope`_
 
 As default, when scope option is used, it also applies for the links to display as output, as such **external URLs are default to exclude** and to overwrite this behavior, `-do` option can be used to display all the external URLs that exist in targets scoped URL / Endpoint.
 
@@ -440,7 +426,6 @@ katana -u https://tesla.com -do
 ```
 
 Here is all the CLI options for the scope control -
-
 
 ```console
 katana -h scope
@@ -454,13 +439,11 @@ SCOPE:
    -do, -display-out-scope          display external endpoint from scoped crawling
 ```
 
-
 ## Crawler Configuration
 
 Katana comes with multiple options to configure and control the crawl as the way we want.
 
-*`-depth`*
-----
+## _`-depth`_
 
 Option to define the `depth` to follow the urls for crawling, the more depth the more number of endpoint being crawled + time for crawl.
 
@@ -468,8 +451,7 @@ Option to define the `depth` to follow the urls for crawling, the more depth the
 katana -u https://tesla.com -d 5
 ```
 
-*`-js-crawl`*
-----
+## _`-js-crawl`_
 
 Option to enable JavaScript file parsing + crawling the endpoints discovered in JavaScript files, disabled as default.
 
@@ -477,8 +459,7 @@ Option to enable JavaScript file parsing + crawling the endpoints discovered in 
 katana -u https://tesla.com -jc
 ```
 
-*`-crawl-duration`*
-----
+## _`-crawl-duration`_
 
 Option to predefined crawl duration, disabled as default.
 
@@ -486,16 +467,15 @@ Option to predefined crawl duration, disabled as default.
 katana -u https://tesla.com -ct 2
 ```
 
-*`-known-files`*
-----
+## _`-known-files`_
+
 Option to enable crawling `robots.txt` and `sitemap.xml` file, disabled as default.
 
 ```
 katana -u https://tesla.com -kf robotstxt,sitemapxml
 ```
 
-*`-automatic-form-fill`*
-----
+## _`-automatic-form-fill`_
 
 Option to enable automatic form filling for known / unknown fields, known field values can be customized as needed by updating form config file at `$HOME/.config/katana/form-config.yaml`.
 
@@ -511,13 +491,14 @@ Authenticated crawling involves including custom headers or cookies in HTTP requ
 
 > **Note**: User needs to be manually perform the authentication and export the session cookie / header to file to use with katana.
 
-*`-headers`*
-----
+## _`-headers`_
 
-Option to add a custom header or cookie to the request. 
+Option to add a custom header or cookie to the request.
+
 > Syntax of [headers](https://datatracker.ietf.org/doc/html/rfc7230#section-3.2) in the HTTP specification
 
 Here is an example of adding a cookie to the request:
+
 ```
 katana -u https://tesla.com -H 'Cookie: usrsess=AmljNrESo'
 ```
@@ -536,8 +517,7 @@ TOKEN=XX
 katana -u https://tesla.com -H cookie.txt
 ```
 
-
-There are more options to configure when needed, here is all the config related CLI options - 
+There are more options to configure when needed, here is all the config related CLI options -
 
 ```console
 katana -h config
@@ -570,12 +550,12 @@ Here is an example of starting chrome browser with remote debugging enabled and 
 
 **step 1) First Locate path of chrome executable**
 
-| Operating System | Chromium Executable Location | Google Chrome Executable Location |
-|------------------|------------------------------|-----------------------------------|
-| Windows (64-bit) | `C:\Program Files (x86)\Google\Chromium\Application\chrome.exe` | `C:\Program Files (x86)\Google\Chrome\Application\chrome.exe` |
-| Windows (32-bit) | `C:\Program Files\Google\Chromium\Application\chrome.exe` | `C:\Program Files\Google\Chrome\Application\chrome.exe` |
-| macOS | `/Applications/Chromium.app/Contents/MacOS/Chromium` | `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome` |
-| Linux | `/usr/bin/chromium` | `/usr/bin/google-chrome` |
+| Operating System | Chromium Executable Location                                    | Google Chrome Executable Location                              |
+| ---------------- | --------------------------------------------------------------- | -------------------------------------------------------------- |
+| Windows (64-bit) | `C:\Program Files (x86)\Google\Chromium\Application\chrome.exe` | `C:\Program Files (x86)\Google\Chrome\Application\chrome.exe`  |
+| Windows (32-bit) | `C:\Program Files\Google\Chromium\Application\chrome.exe`       | `C:\Program Files\Google\Chrome\Application\chrome.exe`        |
+| macOS            | `/Applications/Chromium.app/Contents/MacOS/Chromium`            | `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome` |
+| Linux            | `/usr/bin/chromium`                                             | `/usr/bin/google-chrome`                                       |
 
 **step 2) Start chrome with remote debugging enabled and it will return websocker url. For example, on MacOS, you can start chrome with remote debugging enabled using following command** -
 
@@ -596,11 +576,9 @@ katana -headless -u https://tesla.com -cwu ws://127.0.0.1:9222/devtools/browser/
 
 > **Note**: you can use `-cdd` option to specify custom chrome data directory to store browser data and cookies but that does not save session data if cookie is set to `Session` only or expires after certain time.
 
-
 ## Filters
 
-*`-field`*
-----
+## _`-field`_
 
 Katana comes with built in fields that can be used to filter the output for the desired information, `-f` option can be used to specify any of the available fields.
 
@@ -608,25 +586,24 @@ Katana comes with built in fields that can be used to filter the output for the 
    -f, -field string  field to display in output (url,path,fqdn,rdn,rurl,qurl,qpath,file,key,value,kv,dir,udir)
 ```
 
-Here is a table with examples of each field and expected output when used - 
+Here is a table with examples of each field and expected output when used -
 
-
-| FIELD   | DESCRIPTION                 | EXAMPLE                                                      |
-| ------- | --------------------------- | ------------------------------------------------------------ |
-| `url`   | URL Endpoint                | `https://admin.projectdiscovery.io/admin/login?user=admin&password=admin` |
+| FIELD   | DESCRIPTION                 | EXAMPLE                                                                       |
+| ------- | --------------------------- | ----------------------------------------------------------------------------- |
+| `url`   | URL Endpoint                | `https://admin.projectdiscovery.io/admin/login?user=admin&password=admin`     |
 | `qurl`  | URL including query param   | `https://admin.projectdiscovery.io/admin/login.php?user=admin&password=admin` |
-| `qpath` | Path including query param  | `/login?user=admin&password=admin`                           |
-| `path`  | URL Path                    | `https://admin.projectdiscovery.io/admin/login`              |
-| `fqdn`  | Fully Qualified Domain name | `admin.projectdiscovery.io`                                  |
-| `rdn`   | Root Domain name            | `projectdiscovery.io`                                        |
-| `rurl`  | Root URL                    | `https://admin.projectdiscovery.io`                          |
-| `ufile` | URL with File               | `https://admin.projectdiscovery.io/login.js`                 |
-| `file`  | Filename in URL             | `login.php`                                                  |
-| `key`   | Parameter keys in URL       | `user,password`                                              |
-| `value` | Parameter values in URL     | `admin,admin`                                                |
-| `kv`    | Keys=Values in URL          | `user=admin&password=admin`                                  |
-| `dir`   | URL Directory name          | `/admin/`                                                    |
-| `udir`  | URL with Directory          | `https://admin.projectdiscovery.io/admin/`                   |
+| `qpath` | Path including query param  | `/login?user=admin&password=admin`                                            |
+| `path`  | URL Path                    | `https://admin.projectdiscovery.io/admin/login`                               |
+| `fqdn`  | Fully Qualified Domain name | `admin.projectdiscovery.io`                                                   |
+| `rdn`   | Root Domain name            | `projectdiscovery.io`                                                         |
+| `rurl`  | Root URL                    | `https://admin.projectdiscovery.io`                                           |
+| `ufile` | URL with File               | `https://admin.projectdiscovery.io/login.js`                                  |
+| `file`  | Filename in URL             | `login.php`                                                                   |
+| `key`   | Parameter keys in URL       | `user,password`                                                               |
+| `value` | Parameter values in URL     | `admin,admin`                                                                 |
+| `kv`    | Keys=Values in URL          | `user=admin&password=admin`                                                   |
+| `dir`   | URL Directory name          | `/admin/`                                                                     |
+| `udir`  | URL with Directory          | `https://admin.projectdiscovery.io/admin/`                                    |
 
 Here is an example of using field option to only display all the urls with query parameter in it -
 
@@ -652,13 +629,13 @@ Here is example custom field.
 - name: email
   type: regex
   regex:
-  - '([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)'
-  - '([a-zA-Z0-9+._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)'
+    - '([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)'
+    - '([a-zA-Z0-9+._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)'
 
 - name: phone
   type: regex
   regex:
-  - '\d{3}-\d{8}|\d{4}-\d{7}'
+    - '\d{3}-\d{8}|\d{4}-\d{7}'
 ```
 
 When defining custom fields, following attributes are supported:
@@ -669,7 +646,7 @@ When defining custom fields, following attributes are supported:
 
 - **type** (required)
 
-> The type of custom attribute, currenly supported option - `regex` 
+> The type of custom attribute, currenly supported option - `regex`
 
 - **part** (optional)
 
@@ -685,8 +662,7 @@ When defining custom fields, following attributes are supported:
 katana -u https://tesla.com -f email,phone
 ```
 
-*`-store-field`*
----
+## _`-store-field`_
 
 To compliment `field` option which is useful to filter output at run time, there is `-sf, -store-fields` option which works exactly like field option except instead of filtering, it stores all the information on the disk under `katana_field` directory sorted by target url.
 
@@ -711,8 +687,7 @@ The `-store-field` option can be useful for collecting information to build a ta
 
 ### Katana Filters
 
-*`-extension-match`*
----
+## _`-extension-match`_
 
 Crawl output can be easily matched for specific extension using `-em` option to ensure to display only output containing given extension.
 
@@ -720,8 +695,7 @@ Crawl output can be easily matched for specific extension using `-em` option to 
 katana -u https://tesla.com -silent -em js,jsp,json
 ```
 
-*`-extension-filter`*
----
+## _`-extension-filter`_
 
 Crawl output can be easily filtered for specific extension using `-ef` option which ensure to remove all the urls containing given extension.
 
@@ -729,15 +703,16 @@ Crawl output can be easily filtered for specific extension using `-ef` option wh
 katana -u https://tesla.com -silent -ef css,txt,md
 ```
 
-*`-match-regex`*
----
+## _`-match-regex`_
+
 The `-match-regex` or `-mr` flag allows you to filter output URLs using regular expressions. When using this flag, only URLs that match the specified regular expression will be printed in the output.
 
 ```
 katana -u https://tesla.com -mr 'https://shop\.tesla\.com/*' -silent
 ```
-*`-filter-regex`*
----
+
+## _`-filter-regex`_
+
 The `-filter-regex` or `-fr` flag allows you to filter output URLs using regular expressions. When using this flag, it will skip the URLs that are match the specified regular expression.
 
 ```
@@ -749,21 +724,29 @@ katana -u https://tesla.com -fr 'https://www\.tesla\.com/*' -silent
 Katana supports DSL-based expressions for advanced matching and filtering capabilities:
 
 - To match endpoints with a 200 status code:
+
 ```shell
 katana -u https://www.hackerone.com -mdc 'status_code == 200'
 ```
+
 - To match endpoints that contain "default" and have a status code other than 403:
+
 ```shell
 katana -u https://www.hackerone.com -mdc 'contains(endpoint, "default") && status_code != 403'
 ```
+
 - To match endpoints with PHP technologies:
+
 ```shell
 katana -u https://www.hackerone.com -mdc 'contains(to_lower(technologies), "php")'
 ```
+
 - To filter out endpoints running on Cloudflare:
+
 ```shell
 katana -u https://www.hackerone.com -fdc 'contains(to_lower(technologies), "cloudflare")'
 ```
+
 DSL functions can be applied to any keys in the jsonl output. For more information on available DSL functions, please visit the [dsl project](https://github.com/projectdiscovery/dsl).
 
 Here are additional filter options -
@@ -783,13 +766,11 @@ FILTER:
    -fdc, -filter-condition string   filter response with dsl based condition
 ```
 
-
 ## Rate Limit
 
 It's easy to get blocked / banned while crawling if not following target websites limits, katana comes with multiple option to tune the crawl to go as fast / slow we want.
 
-*`-delay`*
------
+## _`-delay`_
 
 option to introduce a delay in seconds between each new request katana makes while crawling, disabled as default.
 
@@ -797,33 +778,32 @@ option to introduce a delay in seconds between each new request katana makes whi
 katana -u https://tesla.com -delay 20
 ```
 
-*`-concurrency`*
------
+## _`-concurrency`_
+
 option to control the number of urls per target to fetch at the same time.
 
 ```
 katana -u https://tesla.com -c 20
 ```
 
+## _`-parallelism`_
 
-*`-parallelism`*
------
 option to define number of target to process at same time from list input.
 
 ```
 katana -u https://tesla.com -p 20
 ```
 
-*`-rate-limit`*
------
+## _`-rate-limit`_
+
 option to use to define max number of request can go out per second.
 
 ```
 katana -u https://tesla.com -rl 100
 ```
 
-*`-rate-limit-minute`*
------
+## _`-rate-limit-minute`_
+
 option to use to define max number of request can go out per minute.
 
 ```
@@ -848,17 +828,15 @@ RATE-LIMIT:
 
 Katana support both file output in plain text format as well as JSON which includes additional information like, `source`, `tag`, and `attribute` name to co-related the discovered endpoint.
 
-*`-output`*
+_`-output`_
 
 By default, katana outputs the crawled endpoints in plain text format. The results can be written to a file by using the -output option.
-
 
 ```console
 katana -u https://example.com -no-scope -output example_endpoints.txt
 ```
 
-*`-jsonl`*
----
+## _`-jsonl`_
 
 ```console
 katana -u https://example.com -jsonl | jq .
@@ -900,8 +878,7 @@ katana -u https://example.com -jsonl | jq .
 }
 ```
 
-*`-store-response`*
-----
+## _`-store-response`_
 
 The `-store-response` option allows for writing all crawled endpoint requests and responses to a text file. When this option is used, text files including the request and response will be written to the **katana_response** directory. If you would like to specify a custom directory, you can use the `-store-response-dir` option.
 
@@ -918,7 +895,7 @@ katana_response/www.iana.org/bfc096e6dd93b993ca8918bf4c08fdc707a70723.txt http:/
 
 **Note:**
 
-*`-store-response` option is not supported in `-headless` mode.*
+_`-store-response` option is not supported in `-headless` mode._
 
 Here are additional CLI options related to output -
 
@@ -937,6 +914,7 @@ OUTPUT:
 ```
 
 ## Katana as a library
+
 `katana` can be used as a library by creating an instance of the `Option` struct and populating it with the same options that would be specified via CLI. Using the options you can create `crawlerOptions` and so standard or hybrid `crawler`.
 `crawler.Crawl` method should be called to crawl the input.
 
@@ -984,12 +962,12 @@ func main() {
 	}
 }
 ```
---------
+
+---
 
 <div align="center">
 
 katana is made with ❤️ by the [projectdiscovery](https://projectdiscovery.io) team and distributed under [MIT License](LICENSE.md).
-
 
 <a href="https://discord.gg/projectdiscovery"><img src="https://raw.githubusercontent.com/projectdiscovery/nuclei-burp-plugin/main/static/join-discord.png" width="300" alt="Join Discord"></a>
 
