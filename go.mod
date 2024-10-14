@@ -11,7 +11,7 @@ require (
 	github.com/lukasbob/srcset v0.0.0-20190730101422-86b742e617f3
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/pkg/errors v0.9.1
-	github.com/projectdiscovery/dsl v0.2.4
+	github.com/projectdiscovery/dsl v0.2.6
 	github.com/projectdiscovery/fastdialer v0.2.9
 	github.com/projectdiscovery/goflags v0.1.64
 	github.com/projectdiscovery/gologger v1.1.26
@@ -19,7 +19,7 @@ require (
 	github.com/projectdiscovery/mapcidr v1.1.34
 	github.com/projectdiscovery/ratelimit v0.0.58
 	github.com/projectdiscovery/retryablehttp-go v1.0.80
-	github.com/projectdiscovery/utils v0.2.12
+	github.com/projectdiscovery/utils v0.2.13
 	github.com/projectdiscovery/wappalyzergo v0.1.22
 	github.com/remeh/sizedwaitgroup v1.0.0
 	github.com/rs/xid v1.5.0
