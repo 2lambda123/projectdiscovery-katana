@@ -17,9 +17,9 @@ require (
 	github.com/projectdiscovery/gologger v1.1.28
 	github.com/projectdiscovery/hmap v0.0.62
 	github.com/projectdiscovery/mapcidr v1.1.34
-	github.com/projectdiscovery/ratelimit v0.0.59
+	github.com/projectdiscovery/ratelimit v0.0.61
 	github.com/projectdiscovery/retryablehttp-go v1.0.83
-	github.com/projectdiscovery/utils v0.2.14
+	github.com/projectdiscovery/utils v0.2.15
 	github.com/projectdiscovery/wappalyzergo v0.1.22
 	github.com/remeh/sizedwaitgroup v1.0.0
 	github.com/rs/xid v1.5.0
