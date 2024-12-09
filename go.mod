@@ -12,10 +12,10 @@ require (
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/pkg/errors v0.9.1
 	github.com/projectdiscovery/dsl v0.3.3
-	github.com/projectdiscovery/fastdialer v0.2.11
+	github.com/projectdiscovery/fastdialer v0.2.13
 	github.com/projectdiscovery/goflags v0.1.65
 	github.com/projectdiscovery/gologger v1.1.33
-	github.com/projectdiscovery/hmap v0.0.68
+	github.com/projectdiscovery/hmap v0.0.69
 	github.com/projectdiscovery/mapcidr v1.1.34
 	github.com/projectdiscovery/ratelimit v0.0.64
 	github.com/projectdiscovery/retryablehttp-go v1.0.88
