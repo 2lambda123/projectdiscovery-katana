@@ -11,15 +11,15 @@ require (
 	github.com/lukasbob/srcset v0.0.0-20190730101422-86b742e617f3
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/pkg/errors v0.9.1
-	github.com/projectdiscovery/dsl v0.3.3
+	github.com/projectdiscovery/dsl v0.3.7
 	github.com/projectdiscovery/fastdialer v0.2.13
 	github.com/projectdiscovery/goflags v0.1.65
 	github.com/projectdiscovery/gologger v1.1.35
 	github.com/projectdiscovery/hmap v0.0.70
 	github.com/projectdiscovery/mapcidr v1.1.34
 	github.com/projectdiscovery/ratelimit v0.0.65
-	github.com/projectdiscovery/retryablehttp-go v1.0.88
-	github.com/projectdiscovery/utils v0.4.0
+	github.com/projectdiscovery/retryablehttp-go v1.0.89
+	github.com/projectdiscovery/utils v0.4.1
 	github.com/projectdiscovery/wappalyzergo v0.2.5
 	github.com/remeh/sizedwaitgroup v1.0.0
 	github.com/rs/xid v1.5.0
