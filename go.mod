@@ -20,12 +20,12 @@ require (
 	github.com/projectdiscovery/ratelimit v0.0.67
 	github.com/projectdiscovery/retryablehttp-go v1.0.94
 	github.com/projectdiscovery/utils v0.4.4
-	github.com/projectdiscovery/wappalyzergo v0.2.5
+	github.com/projectdiscovery/wappalyzergo v0.2.10
 	github.com/remeh/sizedwaitgroup v1.0.0
 	github.com/rs/xid v1.5.0
 	github.com/stretchr/testify v1.10.0
 	go.uber.org/multierr v1.11.0
-	golang.org/x/net v0.31.0
+	golang.org/x/net v0.33.0
 	gopkg.in/yaml.v3 v3.0.1
 )
 
