@@ -12,7 +12,7 @@ require (
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/pkg/errors v0.9.1
 	github.com/projectdiscovery/dsl v0.3.10
-	github.com/projectdiscovery/fastdialer v0.2.14
+	github.com/projectdiscovery/fastdialer v0.2.15
 	github.com/projectdiscovery/goflags v0.1.65
 	github.com/projectdiscovery/gologger v1.1.39
 	github.com/projectdiscovery/hmap v0.0.75
