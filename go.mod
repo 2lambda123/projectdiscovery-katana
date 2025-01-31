@@ -14,12 +14,12 @@ require (
 	github.com/projectdiscovery/dsl v0.3.10
 	github.com/projectdiscovery/fastdialer v0.2.15
 	github.com/projectdiscovery/goflags v0.1.65
-	github.com/projectdiscovery/gologger v1.1.39
+	github.com/projectdiscovery/gologger v1.1.40
 	github.com/projectdiscovery/hmap v0.0.76
 	github.com/projectdiscovery/mapcidr v1.1.34
 	github.com/projectdiscovery/ratelimit v0.0.69
-	github.com/projectdiscovery/retryablehttp-go v1.0.94
-	github.com/projectdiscovery/utils v0.4.6
+	github.com/projectdiscovery/retryablehttp-go v1.0.97
+	github.com/projectdiscovery/utils v0.4.7
 	github.com/projectdiscovery/wappalyzergo v0.2.12
 	github.com/remeh/sizedwaitgroup v1.0.0
 	github.com/rs/xid v1.5.0
