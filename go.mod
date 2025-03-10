@@ -14,7 +14,7 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/projectdiscovery/dsl v0.3.10
 	github.com/projectdiscovery/fastdialer v0.3.0
-	github.com/projectdiscovery/goflags v0.1.69
+	github.com/projectdiscovery/goflags v0.1.74
 	github.com/projectdiscovery/gologger v1.1.46
 	github.com/projectdiscovery/hmap v0.0.82
 	github.com/projectdiscovery/mapcidr v1.1.34
